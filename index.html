@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <!-- Dynamic SEO Meta Tags (Populated by app.js from config.js) -->
+  <title>Project Alpha | Launching Soon</title>
+  <meta name="description" content="Something incredible is currently being built. Sign up to get early notifications and exclusive access.">
+  <meta name="keywords" content="under construction, coming soon, landing page, responsive, animated">
+  
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="">
+  <meta property="og:title" content="Project Alpha | Launching Soon">
+  <meta property="og:description" content="Something incredible is currently being built. Sign up to get early notifications and exclusive access.">
+  <meta property="og:image" content="">
+
+  <!-- Twitter -->
+  <meta property="twitter:card" content="summary_large_image">
+  <meta property="twitter:url" content="">
+  <meta property="twitter:title" content="Project Alpha | Launching Soon">
+  <meta property="twitter:description" content="Something incredible is currently being built. Sign up to get early notifications and exclusive access.">
+  <meta property="twitter:image" content="">
+
+  <!-- Robots and Sitemap -->
+  <meta name="robots" content="index, follow">
+  
+  <!-- Favicon Logo -->
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="dark-theme">
+  <!-- Interactive Canvas Background -->
+  <canvas id="particle-canvas"></canvas>
+  
+  <!-- Decorative CSS Gradient Mesh Background -->
+  <div class="mesh-gradient"></div>
+
+  <!-- Header Bar -->
+  <header class="site-header">
+    <div class="logo-container">
+      <svg class="logo-svg" width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M16 2L30 10V22L16 30L2 22V10L16 2Z" stroke="url(#logo-grad)" stroke-width="2.5" stroke-linejoin="round"/>
+        <path d="M16 8L25 13V19L16 24L7 19V13L16 8Z" fill="url(#logo-grad)" fill-opacity="0.2" stroke="url(#logo-grad)" stroke-width="1.5" stroke-linejoin="round"/>
+        <circle cx="16" cy="16" r="3" fill="url(#logo-grad)"/>
+        <defs>
+          <linearGradient id="logo-grad" x1="2" y1="2" x2="30" y2="30" gradientUnits="userSpaceOnUse">
+            <stop stop-color="var(--accent-color)"/>
+            <stop offset="1" stop-color="var(--accent-glow)"/>
+          </linearGradient>
+        </defs>
+      </svg>
+      <span class="logo-text" id="site-logo-text">Alpha</span>
+    </div>
+    
+    <div class="header-controls">
+      <!-- Theme Switch Button -->
+      <button class="control-btn" id="theme-toggle" aria-label="Toggle Dark/Light Mode" title="Toggle Theme">
+        <!-- Sun Icon -->
+        <svg class="icon-sun" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="4"/>
+          <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/>
+        </svg>
+        <!-- Moon Icon -->
+        <svg class="icon-moon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/>
+        </svg>
+      </button>
+
+      <!-- Contact Us Header Link -->
+      <button class="contact-header-btn" id="open-contact-modal-btn">Inquiries</button>
+    </div>
+  </header>
+
+  <!-- Main Hero Content Container -->
+  <main class="landing-container">
+    <div class="glass-card">
+      <div class="grid-content">
+        <!-- Left Side: Hero Text & Interaction -->
+        <div class="main-info">
+          <!-- Status Badge -->
+          <div class="badge-wrapper">
+            <span class="status-badge" id="status-badge">COMING SOON</span>
+          </div>
+
+          <!-- Headline -->
+          <h1 class="headline" id="main-headline">We're Crafting Something Special</h1>
+          
+          <!-- Short Description -->
+          <p class="description" id="main-description">
+            Our team is working hard behind the scenes to deliver an out-of-this-world experience. Subscribe to get notified exactly when we launch.
+          </p>
+
+          <!-- Countdown Timer Group -->
+          <div class="countdown-container" id="countdown-timer">
+            <!-- Days -->
+            <div class="countdown-item">
+              <div class="countdown-number-wrapper">
+                <span class="countdown-digit" id="days">00</span>
+              </div>
+              <span class="countdown-label">Days</span>
+            </div>
+            
+            <!-- Hours -->
+            <div class="countdown-item">
+              <div class="countdown-number-wrapper">
+                <span class="countdown-digit" id="hours">00</span>
+              </div>
+              <span class="countdown-label">Hours</span>
+            </div>
+
+            <!-- Minutes -->
+            <div class="countdown-item">
+              <div class="countdown-number-wrapper">
+                <span class="countdown-digit" id="minutes">00</span>
+              </div>
+              <span class="countdown-label">Minutes</span>
+            </div>
+
+            <!-- Seconds -->
+            <div class="countdown-item">
+              <div class="countdown-number-wrapper">
+                <span class="countdown-digit" id="seconds">00</span>
+              </div>
+              <span class="countdown-label">Seconds</span>
+            </div>
+          </div>
+
+          <!-- Progress Indicator -->
+          <div class="progress-container">
+            <div class="progress-header">
+              <span class="progress-title">Build Progress</span>
+              <span class="progress-val" id="progress-val">74%</span>
+            </div>
+            <div class="progress-track">
+              <div class="progress-bar" id="progress-bar">
+                <div class="progress-glow"></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Email Subscription Form -->
+          <div class="subscription-section">
+            <form id="subscribe-form" novalidate>
+              <div class="input-group">
+                <div class="input-icon-wrapper">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mail-icon">
+                    <rect width="20" height="16" x="2" y="4" rx="2"/>
+                    <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/>
+                  </svg>
+                </div>
+                <input type="email" id="subscriber-email" placeholder="Enter your email address" required aria-label="Email address for notifications">
+                <button type="submit" class="submit-btn" id="submit-btn">
+                  <span>Notify Me</span>
+                  <svg class="btn-arrow" width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M6 12L10 8L6 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                </button>
+              </div>
+              <div class="error-msg" id="validation-error">Please enter a valid email address.</div>
+            </form>
+            
+            <!-- Success Subscription Modal State -->
+            <div class="subscribe-success-card" id="subscribe-success">
+              <div class="success-icon-badge">
+                <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="20 6 9 17 4 12"/>
+                </svg>
+              </div>
+              <div class="success-text-wrapper">
+                <h4>You're on the list!</h4>
+                <p>We'll notify you as soon as we go live. Thank you for your support!</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right Side: Graphic Visual Display -->
+        <div class="graphic-panel">
+          <div class="graphic-wrapper">
+            <!-- Out-of-this-world Animated Astronaut SVG -->
+            <svg class="hero-svg" viewBox="0 0 600 600" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <!-- Orbit lines / Stars background -->
+              <g class="orbit-group" opacity="0.3">
+                <ellipse cx="300" cy="300" rx="240" ry="100" stroke="url(#grid-gradient)" stroke-width="1.5" stroke-dasharray="10 6" transform="rotate(-15 300 300)"/>
+                <ellipse cx="300" cy="300" rx="190" ry="80" stroke="url(#grid-gradient)" stroke-width="1" stroke-dasharray="5 5" transform="rotate(25 300 300)"/>
+                <ellipse cx="300" cy="300" rx="140" ry="50" stroke="url(#grid-gradient)" stroke-width="1.5" transform="rotate(-40 300 300)"/>
+              </g>
+
+              <!-- Space Particles & Stars -->
+              <g class="stars-group">
+                <circle cx="100" cy="120" r="2" fill="#fff" opacity="0.6"/>
+                <circle cx="500" cy="180" r="3" fill="var(--accent-glow)" opacity="0.8"/>
+                <circle cx="150" cy="450" r="1.5" fill="#fff" opacity="0.5"/>
+                <circle cx="480" cy="480" r="2" fill="var(--accent-color)" opacity="0.7"/>
+                <circle cx="280" cy="80" r="1" fill="#fff" opacity="0.4"/>
+                <circle cx="550" cy="320" r="2.5" fill="#fff" opacity="0.9"/>
+                
+                <!-- Cross/Plus stars -->
+                <path d="M 80,250 L 90,250 M 85,245 L 85,255" stroke="var(--accent-glow)" stroke-width="1" opacity="0.6"/>
+                <path d="M 520,90 L 526,90 M 523,87 L 523,93" stroke="#fff" stroke-width="1" opacity="0.5"/>
+              </g>
+
+              <!-- Rotating Tech Ring -->
+              <g class="tech-ring-1" transform-origin="300 300">
+                <circle cx="300" cy="300" r="110" stroke="url(#tech-gradient-1)" stroke-width="2" stroke-dasharray="15 30 40 10"/>
+                <circle cx="300" cy="300" r="115" stroke="var(--accent-color)" stroke-width="0.7" opacity="0.5"/>
+              </g>
+
+              <g class="tech-ring-2" transform-origin="300 300">
+                <circle cx="300" cy="300" r="85" stroke="url(#tech-gradient-2)" stroke-width="3" stroke-dasharray="120 40 10 20"/>
+              </g>
+
+              <!-- Main Floating Platform / Satellite Base -->
+              <g class="satellite-platform" transform="translate(0, 10)">
+                <!-- Solar panel grids -->
+                <path d="M 120,380 L 220,350 L 220,330 L 120,360 Z" fill="url(#panel-grad)" stroke="var(--accent-color)" stroke-width="1"/>
+                <path d="M 130,377 L 210,353" stroke="var(--accent-glow)" stroke-width="0.5"/>
+                <path d="M 150,371 L 190,359" stroke="var(--accent-glow)" stroke-width="0.5"/>
+
+                <path d="M 480,380 L 380,350 L 380,330 L 480,360 Z" fill="url(#panel-grad)" stroke="var(--accent-color)" stroke-width="1"/>
+                <path d="M 470,377 L 390,353" stroke="var(--accent-glow)" stroke-width="0.5"/>
+                <path d="M 450,371 L 410,359" stroke="var(--accent-glow)" stroke-width="0.5"/>
+
+                <!-- Connector bars -->
+                <line x1="220" y1="340" x2="380" y2="340" stroke="#7a829a" stroke-width="5"/>
+                <line x1="220" y1="340" x2="380" y2="340" stroke="var(--accent-color)" stroke-width="1.5" opacity="0.8"/>
+
+                <!-- Main Module Core -->
+                <rect x="270" y="300" width="60" height="80" rx="8" fill="url(#body-metallic-grad)" stroke="var(--accent-color)" stroke-width="2"/>
+                <!-- Glow Indicators -->
+                <circle cx="285" cy="325" r="3" fill="#10B981" class="pulsing-led"/>
+                <circle cx="285" cy="335" r="3" fill="var(--accent-glow)" class="pulsing-led" style="animation-delay: 0.5s;"/>
+                <rect x="300" y="320" width="18" height="25" rx="3" fill="#1e293b" stroke="var(--accent-color)" stroke-width="0.5"/>
+                <!-- Interactive progress line inside details -->
+                <line x1="304" y1="332" x2="314" y2="332" stroke="#22C55E" stroke-width="2"/>
+
+                <!-- Dish Antenna -->
+                <path d="M 285,300 C 275,270 325,270 315,300 Z" fill="url(#body-metallic-grad)" stroke="var(--accent-color)" stroke-width="1.5"/>
+                <line x1="300" y1="285" x2="300" y2="255" stroke="var(--accent-color)" stroke-width="2"/>
+                <circle cx="300" cy="253" r="3" fill="var(--accent-glow)" class="pulsing-led-alert"/>
+                
+                <!-- Thrust glow at the bottom -->
+                <path d="M 290,380 L 295,405 L 305,405 L 310,380 Z" fill="url(#thrust-gradient)"/>
+              </g>
+
+              <!-- Floating Space Suit Astronaut -->
+              <g class="astronaut" transform-origin="300 200">
+                <!-- Golden suit tether -->
+                <path class="astronaut-tether" d="M 300,340 C 250,330 200,280 260,200" fill="none" stroke="var(--accent-glow)" stroke-width="1.5" stroke-dasharray="3 3"/>
+
+                <!-- Suit shadow -->
+                <ellipse cx="262" cy="202" rx="35" ry="40" fill="rgba(0,0,0,0.15)"/>
+
+                <!-- Body / Suit Structure -->
+                <!-- Backpack -->
+                <rect x="215" y="155" width="25" height="50" rx="6" fill="#cbd5e1" stroke="#94a3b8" stroke-width="2"/>
+                <rect x="215" y="165" width="6" height="30" fill="var(--accent-color)"/>
+
+                <!-- Legs -->
+                <!-- Left Leg -->
+                <g class="astronaut-left-leg">
+                  <path d="M 235,210 L 225,245 C 223,250 215,248 215,242 L 223,210 Z" fill="#e2e8f0" stroke="#94a3b8" stroke-width="2" stroke-linejoin="round"/>
+                  <path d="M 215,242 L 210,248 L 220,250 Z" fill="#475569"/> <!-- Shoe -->
+                </g>
+                <!-- Right Leg -->
+                <g class="astronaut-right-leg">
+                  <path d="M 255,210 L 265,240 C 267,245 275,243 273,237 L 260,210 Z" fill="#e2e8f0" stroke="#94a3b8" stroke-width="2" stroke-linejoin="round"/>
+                  <path d="M 273,237 L 278,243 L 268,246 Z" fill="#475569"/> <!-- Shoe -->
+                </g>
+
+                <!-- Torso -->
+                <rect x="228" y="152" width="38" height="60" rx="15" fill="#f8fafc" stroke="#94a3b8" stroke-width="2.5"/>
+                <!-- Suit Details / Stripes -->
+                <line x1="233" y1="180" x2="261" y2="180" stroke="#e2e8f0" stroke-width="2"/>
+                <rect x="238" y="162" width="18" height="12" rx="2" fill="#cbd5e1"/>
+                <circle cx="243" cy="168" r="1.5" fill="#ef4444"/>
+                <circle cx="251" cy="168" r="1.5" fill="var(--accent-color)"/>
+
+                <!-- Arms -->
+                <!-- Left Arm (Waving) -->
+                <g class="astronaut-left-arm" transform-origin="230 160">
+                  <path d="M 230,165 C 205,160 195,135 205,130 C 215,125 225,145 230,158 Z" fill="#e2e8f0" stroke="#94a3b8" stroke-width="2" stroke-linejoin="round"/>
+                  <circle cx="203" cy="128" r="5" fill="#475569"/> <!-- Glove -->
+                </g>
+                <!-- Right Arm (Holding tool/pointing) -->
+                <g class="astronaut-right-arm">
+                  <path d="M 264,165 C 280,175 295,190 288,200 C 280,210 270,185 264,175 Z" fill="#e2e8f0" stroke="#94a3b8" stroke-width="2" stroke-linejoin="round"/>
+                  <circle cx="290" cy="201" r="5" fill="#475569"/> <!-- Glove -->
+                  <!-- Floating glowing wrench tool -->
+                  <path class="floating-wrench" d="M 292,204 L 305,212 M 302,209 L 307,208 M 304,213 L 303,215" stroke="var(--accent-glow)" stroke-width="1.5"/>
+                </g>
+
+                <!-- Helmet & Head -->
+                <circle cx="247" cy="132" r="20" fill="#f1f5f9" stroke="#94a3b8" stroke-width="2"/>
+                <!-- Visor with glowing reflection -->
+                <path d="M 234,132 C 234,120 260,120 260,132 C 260,142 234,142 234,132 Z" fill="url(#visor-grad)" stroke="#1e293b" stroke-width="1"/>
+                <path d="M 238,126 Q 248,122 254,128" stroke="#fff" stroke-width="1.5" stroke-linecap="round" fill="none" opacity="0.7"/>
+              </g>
+
+              <!-- Gradients & Custom Definitions -->
+              <defs>
+                <!-- Visor golden/indigo gradient reflection -->
+                <linearGradient id="visor-grad" x1="0" y1="0" x2="1" y2="1">
+                  <stop offset="0%" stop-color="#1e1b4b"/>
+                  <stop offset="60%" stop-color="var(--accent-color)"/>
+                  <stop offset="100%" stop-color="#f59e0b"/>
+                </linearGradient>
+
+                <!-- Grid/Lines Fade Gradient -->
+                <linearGradient id="grid-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stop-color="rgba(255,255,255,0.05)"/>
+                  <stop offset="50%" stop-color="var(--accent-color)" stop-opacity="0.6"/>
+                  <stop offset="100%" stop-color="rgba(255,255,255,0.05)"/>
+                </linearGradient>
+
+                <!-- Metallic Body Gradient -->
+                <linearGradient id="body-metallic-grad" x1="0" y1="0" x2="1" y2="1">
+                  <stop offset="0%" stop-color="#f8fafc"/>
+                  <stop offset="40%" stop-color="#cbd5e1"/>
+                  <stop offset="100%" stop-color="#64748b"/>
+                </linearGradient>
+
+                <!-- Thrust engine fire gradient -->
+                <linearGradient id="thrust-gradient" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0%" stop-color="var(--accent-glow)" stop-opacity="1"/>
+                  <stop offset="40%" stop-color="var(--accent-color)" stop-opacity="0.8"/>
+                  <stop offset="100%" stop-color="rgba(239, 68, 68, 0)"/>
+                </linearGradient>
+
+                <!-- Ring gradients -->
+                <linearGradient id="tech-gradient-1" x1="0" y1="0" x2="1" y2="1">
+                  <stop offset="0%" stop-color="var(--accent-color)" stop-opacity="0.2"/>
+                  <stop offset="50%" stop-color="var(--accent-glow)" stop-opacity="0.9"/>
+                  <stop offset="100%" stop-color="var(--accent-color)" stop-opacity="0.1"/>
+                </linearGradient>
+
+                <linearGradient id="tech-gradient-2" x1="0" y1="0" x2="1" y2="0">
+                  <stop offset="0%" stop-color="rgba(255,255,255,0)"/>
+                  <stop offset="50%" stop-color="var(--accent-glow)" stop-opacity="0.4"/>
+                  <stop offset="100%" stop-color="rgba(255,255,255,0)"/>
+                </linearGradient>
+
+                <!-- Solar panel color gradient -->
+                <linearGradient id="panel-grad" x1="0" y1="0" x2="1" y2="1">
+                  <stop offset="0%" stop-color="#0f172a"/>
+                  <stop offset="50%" stop-color="var(--accent-color)" stop-opacity="0.3"/>
+                  <stop offset="100%" stop-color="#1e1b4b"/>
+                </linearGradient>
+              </defs>
+            </svg>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Contact Form Modal Popup (Handles FR-6 Inquiries Form) -->
+  <div class="modal-overlay" id="contact-modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+    <div class="modal-card">
+      <button class="modal-close-btn" id="close-contact-modal-btn" aria-label="Close contact dialog">&times;</button>
+      <h3 id="modal-title">Get in Touch</h3>
+      <p class="modal-subtitle">Have questions or business inquiries? Drop us a message below and we will get back to you shortly.</p>
+      
+      <form id="contact-form" novalidate>
+        <div class="form-group">
+          <label for="contact-name">Full Name</label>
+          <input type="text" id="contact-name" placeholder="John Doe" required>
+          <span class="field-error" id="name-error">Please enter your name.</span>
+        </div>
+        
+        <div class="form-group">
+          <label for="contact-email">Email Address</label>
+          <input type="email" id="contact-email" placeholder="john@example.com" required>
+          <span class="field-error" id="email-error">Please enter a valid email address.</span>
+        </div>
+
+        <div class="form-group">
+          <label for="contact-message">Message</label>
+          <textarea id="contact-message" rows="4" placeholder="How can we help you?" required></textarea>
+          <span class="field-error" id="message-error">Please enter your message.</span>
+        </div>
+
+        <button type="submit" class="contact-submit-btn" id="contact-submit-btn">Send Message</button>
+      </form>
+
+      <!-- Contact success state -->
+      <div class="contact-success-state" id="contact-success">
+        <div class="success-icon-badge">
+          <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M22 2 11 13M22 2l-7 20-4-9-9-4Z"/>
+          </svg>
+        </div>
+        <h4>Message Sent Successfully!</h4>
+        <p>Thank you for reaching out. We will get back to you at the email address provided as soon as possible.</p>
+        <button class="modal-done-btn" id="contact-done-btn">Done</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer Area (Social profiles links, contact trigger & copy info) -->
+  <footer class="site-footer">
+    <div class="social-links" id="social-links-container">
+      <!-- Injected dynamically from config.js -->
+    </div>
+    
+    <div class="footer-bottom">
+      <p id="copyright-text">&copy; 2026 Alpha. All rights reserved.</p>
+      <div class="footer-links">
+        <a href="#" id="footer-contact-link">Contact Us</a>
+        <span class="bullet">&bull;</span>
+        <span id="footer-email-text">hello@website.com</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="config.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
